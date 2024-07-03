@@ -20,7 +20,7 @@ function BookingPage() {
     if (!booking)
         return '';
     return (
-        <div className='my-8'>
+        <div className='my-8 md:w-2/3 md:mx-auto'>
             <h1 className='text-3xl'>{booking.place.title}</h1>
             <AddressLink>{booking.place.address}</AddressLink>
             <div className='bg-gray-200 p-6 my-4 rounded-2xl flex justify-between items-center'>

@@ -4,7 +4,7 @@ import { UserContext } from "./UserContext"
 export default function Header() {
   const { user } = useContext(UserContext)
   return (
-    <div>
+    <div className="md:w-5/6 md:mx-auto">
       <header className="flex justify-between">
         <a href="/" className="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 -rotate-90">

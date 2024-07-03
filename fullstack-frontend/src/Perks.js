@@ -20,7 +20,7 @@ function Perks({selected,onChange}) {
         <div>
              <h2 className='text-2xl mt-4'> Perks</h2>
                             <p className='text-gray-500 text-sm'>Select all the perks of your place</p>
-                            <div className='grid grid-cols-2 md:grid-cols-3 gap-2 mt-2 lg:grid-cols-6'>
+                            <div className='grid grid-cols-2 md:grid-cols-3 gap-2 mt-2 lg:grid-cols-4'>
                                 <label className='border p-4 flex gap-2 rounded-2xl cursor-pointer'>
                                     <input type="checkbox" checked={selected.includes('wifi')} name='wifi' onChange={handleClick} />
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

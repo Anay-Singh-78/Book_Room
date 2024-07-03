@@ -11,7 +11,7 @@ export default function IndexPage(){
     },[])
     // console.log(places)
     return(
-       <div className=" mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 rounded-2xl lg:grid-cols-4">
+       <div className=" mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 rounded-2xl lg:grid-cols-4 md:w-5/6 mx-auto">
         {places.length > 0 && places.map(place=>(
             <Link to={'/place/'+place._id}>
                 <div className="bg-gray-500 rounded-2xl flex mb-2 aspect-sqaure h-72">

@@ -5,8 +5,9 @@ function PlacePicture({place}) {
     if (showAllPhotos) {
         return (
             <div className='absolute inset-0 bg-black text-white min-h-screen'>
-                <div className='p-8 grid gap-4 bg-black '>
-                    <div>
+                <div className=' bg-black opacity'>
+                   <div className=' p-8 grid gap-4 md:w-2/3 md:mx-auto'>
+                   <div>
                         <h2 className='text-2xl font-mono mr-48'>Photos of {place.title}</h2>
                         <button onClick={() => setShowAllPhotos(false)} className='fixed right-8 top-8 shadow shadow-black flex gap-1 px-4 py-2 rounded-2xl bg-white text-black'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -21,6 +22,7 @@ function PlacePicture({place}) {
                             <img src={"http://localhost:5000/uploads/" + photo} alt="" className='w-full' />
                         </div>
                     ))}
+                   </div>
                 </div>
 
             </div>

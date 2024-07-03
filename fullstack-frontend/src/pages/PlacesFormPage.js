@@ -137,7 +137,7 @@ const PlacesFormPage = () => {
                 theme="dark"
 
             />
-            <form action="" onSubmit={saveThePlace}>
+            <form action="" onSubmit={saveThePlace} className='md:w-2/3 md:mx-auto '>
                 {/* Title */}
                 <h2 className='text-2xl mt-4'>Title</h2>
                 <p className='text-gray-500 text-sm'> Title for your place.</p>
