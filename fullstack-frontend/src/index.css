@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+input[type = 'email'],input[type = 'password'],input[type = 'text'],input[type="tel"],textarea,input[type="number"]{
+    @apply w-full border rounded-2xl px-5 py-2 my-1 font-mono;
+}
+
+button.primary{
+    background-color: #F5385D;
+    @apply w-full mt-1 rounded-2xl text-center py-2 text-white font-mono
+    
+}
+textarea{
+    height: 150px;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid black;
+    border-right-color: teal;
+    animation: l2 1s infinite linear;
+  }
+  @keyframes l2 {to{transform: rotate(1turn)}}
+
+  .loader-parent{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  }
