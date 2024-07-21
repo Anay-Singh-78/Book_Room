@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
-function PlacePicture({place}) {
+function PlacePicture({place}) {    
     const [showAllPhotos, setShowAllPhotos] = useState(false)
     if (showAllPhotos) {
         return (
             <div className='absolute inset-0 bg-black text-white min-h-screen'>
                 <div className=' bg-black opacity'>
-                   <div className=' p-8 grid gap-4 md:w-2/3 md:mx-auto'>
+                   <div className=' p-8 grid gap-4 md:w-11/12 lg:w-2/3 md:mx-auto '>
                    <div>
-                        <h2 className='text-2xl font-mono mr-48'>Photos of {place.title}</h2>
+                        <h2 className='text-2xl font-mono mr-48 lg:mr-32'>Photos of {place.title}</h2>
                         <button onClick={() => setShowAllPhotos(false)} className='fixed right-8 top-8 shadow shadow-black flex gap-1 px-4 py-2 rounded-2xl bg-white text-black'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                 <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -18,7 +18,7 @@ function PlacePicture({place}) {
                         </button>
                     </div>
                     {place?.addedPhotos?.length > 0 && place.addedPhotos.map(photo => (
-                        <div className='w-full'>
+                        <div className='w-full' key={photo}>
                             <img src={"http://localhost:5000/uploads/" + photo} alt="" className='w-full' />
                         </div>
                     ))}

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {LoginMiddleware} = require('../Middleware/LoginMiddleware')
-const {routerController,loginController,profileController, logoutController,addPlacesController, showPlace,getPlaceById, putPlaceById, getAllPlaces, bookingPlaces, getBooking} = require('../Controller/RouterController')
+const {routerController,loginController,profileController, logoutController,addPlacesController, showPlace,getPlaceById, putPlaceById, getAllPlaces, bookingPlaces, getBooking,makePayment} = require('../Controller/RouterController')
 
 router.post('/register',routerController);
 router.post('/login',LoginMiddleware,loginController);
@@ -14,4 +14,5 @@ router.put('/places',putPlaceById)
 router.get('/places',getAllPlaces)
 router.post('/booking',bookingPlaces)
 router.get('/bookings',getBooking)
+router.post('/make-payment',makePayment)
 module.exports = router;

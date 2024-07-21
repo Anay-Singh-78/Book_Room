@@ -14,16 +14,16 @@ const PlacePage = () => {
             return;
         axios.get('/places/' + id).then(response => {
             setPlace(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         })
     }, [])
     if (!place)
         return ''
 
-    console.log(place)
+    // console.log(place)
     return (
         <div className='mt-4 bg-gray-100 -mx-8  px-8 pt-8'>
-            <div className='md:w-2/3 md:mx-auto'>
+            <div className='md:w-11/12 lg:w-2/3 md:mx-auto '>
                 <h1 className='text-3xl'>{place.title}</h1>
                 <AddressLink>
                     {place.address}

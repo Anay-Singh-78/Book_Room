@@ -12,7 +12,7 @@ export default function Header() {
           </svg>
           <span className="font-bold text-xl">Airbnb</span>
         </a>
-        <div className="flex border border-gray-300 rounded-full shadow-md shadow-gray-300 py-2 px-4 gap-2 ">
+        <div className="border border-gray-300 hidden md:flex rounded-full shadow-md shadow-gray-300 py-2 px-4 gap-2 ">
           <div>Any where</div>
           <div className="border-l-2 border-gray-400"></div>
           <div>Any week</div>

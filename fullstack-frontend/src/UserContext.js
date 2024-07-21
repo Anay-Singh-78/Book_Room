@@ -7,6 +7,7 @@ export const UserContextProvider = ({children})=>{
     const [user,setUser] = useState(null)
     const [ready,setReady] = useState(false)
     const [showToast,setShowToast] = useState(false)
+    const [showRegisterToast,setShowRegisterToast] = useState(false)
     // const fetchProfile = async()=>{
     //     try{
     //         const response = await axios.get('/profile')
@@ -44,7 +45,7 @@ export const UserContextProvider = ({children})=>{
     }
     },[])
     return(
-    <UserContext.Provider value={{user,setUser,ready,showToast,setShowToast}}>
+    <UserContext.Provider value={{user,setUser,ready,showToast,setShowToast,showRegisterToast,setShowRegisterToast}}>
         {children}
     </UserContext.Provider>
     )

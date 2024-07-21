@@ -48,12 +48,6 @@ const PlacesFormPage = () => {
             toast("Please add a valid image link")
             return;
         }
-        // const extenFind = photoLink.split('.')
-        // const exten = extenFind[extenFind.length - 1]
-        // if (exten !== 'jpg' && exten !== 'png' && exten !== 'webp' && exten !== 'jpeg') {
-        //     toast("Invalid Image Type")
-        //     return;
-        // }
         console.log(photoLink)
         const { data: fileName } = await axios.post('/upload-by-link', { link: photoLink })
         console.log("Checking the value");

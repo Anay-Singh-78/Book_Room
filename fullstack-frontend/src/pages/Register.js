@@ -1,15 +1,17 @@
 // import axios
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link } from "react-router-dom"
+import { UserContext } from "../UserContext"
 export default function Register() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
+  const {setShowRegisterToast} = useContext(UserContext)
   const handleSubmit = async (e) => {
     try{
     e.preventDefault();
@@ -17,10 +19,8 @@ export default function Register() {
       name, email, password
     });
     if (data.status === 200) {
-      toast("Registration Successfull")
-      setTimeout(()=>{
+      setShowRegisterToast(true)
         navigate('/login')
-      },3000)
     }
     setName('')
     setEmail('')

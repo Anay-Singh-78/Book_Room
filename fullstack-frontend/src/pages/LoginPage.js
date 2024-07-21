@@ -7,14 +7,18 @@ export default function LoginPage(){
   const [password,setPassword] = useState('')
   const [email,setEmail] = useState('')
   const navigate = useNavigate();
-  const {setUser,showToast,setShowToast} = useContext(UserContext)
+  const {setUser,showToast,setShowToast,setShowRegisterToast,showRegisterToast} = useContext(UserContext)
  
   useEffect(()=>{
     if(showToast){
       toast("Please Login First")
       setShowToast(false)
     }
-  },[showToast])
+    if(showRegisterToast){
+      toast("Registration Successfull! Please Login")
+      setShowRegisterToast(false)
+    }
+  },[showToast,showRegisterToast,setShowRegisterToast,setShowToast])
   const handleLoginSubmit = async(e)=>{
     
     try{ 

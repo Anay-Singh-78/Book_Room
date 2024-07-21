@@ -15,7 +15,7 @@ const BookingsPage = () => {
     return (
         <div>
             <AccountNav />
-            <div className='md:w-2/3 md:mx-auto flex flex-col gap-4'> 
+            <div className='md:w-11/12 lg:w-2/3 md:mx-auto flex flex-col gap-4'> 
                 {bookings.length > 0 && bookings.map(booking => (
                     <Link to={'/account/bookings/'+booking._id} className='flex gap-4 bg-gray-200 rounded-2xl overflow-hidden '>
                         <div className='w-48'>

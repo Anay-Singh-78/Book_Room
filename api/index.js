@@ -31,7 +31,7 @@ app.get('/test',(req,res)=>{
 })
 app.post('/upload-by-link',async(req,res)=>{
     const {link} = req.body
-    console.log("Hello with the link",link);
+    // console.log("Hello with the link",link);
     const newName ='photo'+Date.now() + '.jpg'
     try{
         await imageDownloader.image({

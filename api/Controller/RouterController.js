@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Booking = require('../Models/Booking');
 const password = "Random123897"
+const stripe = require('stripe')('sk_test_51PebFdFEZRyQV6i8uxn5VjnaeMhPFbm6BYtom7dclW5pNJlX87tx8g61bvCPQwggbZEYQOczQt6a2WQyEHYLONsY00gQBqNxYc')
 exports.routerController = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -18,7 +19,8 @@ exports.routerController = async (req, res) => {
         const data = await User.create({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            profilePicture:''
         });
         console.log("Request Recieved and User Created");
         return res.status(200).json({
@@ -211,3 +213,46 @@ exports.getBooking = async(req,res)=>{
       res.json(await Booking.find({user:data.id}).populate('place').exec())
   })
 }
+
+exports.makePayment = async (req, res) => {
+    const {token} = req.cookies
+    if(!token)
+       return res.status(403).json({ msg: 'No Token is available' });
+    jwt.verify(token, password, async (err, data) => {
+        if (err) {
+            console.log(err);
+            if (err.name === 'TokenExpiredError') {
+                return res.status(403).json({ msg: 'Access token expired' });
+            } else {
+                return res.status(403).json({ msg: 'Invalid token' });
+            }
+        }
+        const result = req.body;
+        const {place,checkIn,checkOut,numberOfGuests,name,phone,price} = result[0];
+        Booking.create({
+            place,checkIn,checkOut,numberOfGuests,name,phone,price,user:data.id
+        }).catch(err=>{
+            console.log(err)
+        })
+        const lineItems = result.map((product) => ({
+            
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: product.name
+                },
+                unit_amount: product.price * 100
+            },
+            quantity: product.numberoOfMaxGuests,    
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: "http://localhost:3000/success",
+            cancel_url: "http://localhost:3000/cancel"
+        });
+        res.json({ url: session.url })
+  })
+};

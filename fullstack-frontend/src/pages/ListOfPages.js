@@ -19,7 +19,7 @@ const ListOfPages = () => {
         Add new Places
     </Link>
     </div>
-    <div className='mt-4 md:w-2/3 md:mx-auto flex flex-col gap-4 rounded-2xl'>
+    <div className='mt-4 md:w-11/12 lg:w-2/3 md:mx-auto flex flex-col gap-4 rounded-2xl'>
         {places.length > 0 && places.map((place)=>(
                 <Link to={'/account/places/'+place._id} className='flex cursor-pointer bg-gray-100 gap-4 px-2 py-3 rounded-2xl items-center'>
                     <div className='flex w-32 h-32 bg-gray-300 shrink-0 '>
