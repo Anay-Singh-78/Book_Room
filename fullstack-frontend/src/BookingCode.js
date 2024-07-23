@@ -12,8 +12,8 @@ function BookingCode({ place }) {
     const [numberoOfMaxGuests, setNumberOfMaxGuests] = useState(1)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
-    const [redirect, setRedirect] = useState('')
-    const { user, setShowToast,setBookingData } = useContext(UserContext)
+    const [redirect] = useState('')
+    const { user, setShowToast } = useContext(UserContext)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,14 +37,17 @@ function BookingCode({ place }) {
                 place: place._id,
                 price: numberOfNights * place.price
             }
-            console.log(numberoOfMaxGuests)
+            // console.log(numberoOfMaxGuests)
             console.log(place.maxGuests)
+            
            if(numberoOfMaxGuests > place.maxGuests)
             return toast("Number of guest is more than the limit")
-            setBookingData(data)
+           
+            // setBookingData(data)
+            console.log("Hii")
             const sendData = [data]
             // const stripe = await loadStripe('pk_live_51PebFdFEZRyQV6i8hRq9TUJpy8Dpy7ubaBxacYIXdNlvysc3CwNqWGd8fZiot9dEEmT7dXk8IAiFAD1lbhMzGZUF00ME0H88pF') 
-            // console.log("Hii")
+          
             const response = await axios.post('/make-payment', sendData)
             console.log(response)
             window.location.href = response.data.url
