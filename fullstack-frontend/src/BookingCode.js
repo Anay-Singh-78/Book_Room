@@ -51,16 +51,6 @@ function BookingCode({ place }) {
             const response = await axios.post('/make-payment', sendData)
             console.log(response)
             window.location.href = response.data.url
-            // const result = await stripe.redirectToCheckout({
-            //     sessionId: response.data.id // Corrected the parameter name
-            // });
-            // console.log("hiiiiiiiiiiiii")
-    
-            // if (result.error) {
-            //     console.error(result.error.message);
-            // }
-            // const bookingId = response.data._id
-            // setRedirect(`/account/bookings/${bookingId}`)
         }
         catch (err) {
             if (err.response && err.response) {
